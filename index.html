@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script>
+        function myBudget()
+        {
+            var name=document.getElementById("name").value;
+            var salary=document.getElementById("salary").value;
+            var otherSI=document.getElementById("ois").value;
+
+            var totalIncome=parseInt(salary)+parseInt( otherSI); 
+            document.getElementById("name1").value = name; 
+            document.getElementById("ti").value = totalIncome; 
+        }
+        function ration(val) {
+            var TI=document.getElementById("ti").value;
+            console.log(TI);
+            var rationExpense=parseInt(TI)*(val/100);
+            document.getElementById('hr').value=rationExpense;
+        }
+        function education(val) {
+            var TI=document.getElementById("ti").value;
+            console.log(TI);
+            var education=parseInt(TI)*(val/100);
+            document.getElementById('ed').value=education;
+        }
+        function shop(val) {
+            var TI=document.getElementById("ti").value;
+            console.log(TI);
+            var shoping=parseInt(TI)*(val/100);
+            document.getElementById('sp').value=shoping;
+        }
+         function travel(val) {
+            var TI=document.getElementById("ti").value;
+            console.log(TI);
+            var travel=parseInt(TI)*(val/100);
+            document.getElementById('tr').value=travel;
+        }
+    </script>
+</head>
+<body class="fs-3">
+    <h1 class="text-danger text-center mb-4" style="margin-top: 50px;">Budget Managment</h1>
+        <div class="container " style="margin-top: 50px;">
+            
+            <div class="w-100 border border-1 p-5 bg-success rounded-4 text-warning">
+            <h3 class="text-center text-warning">Financial Source</h3>
+                <form class="m-auto w-75" action="#">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Name</label>
+                        <input type="text" class="form-control  fs-4" id="name" placeholder="Enter Your Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Salary</label>
+                        <input type="number" class="form-control fs-4" id="salary" placeholder="Enter Your Salary">
+                    </div>  
+                    <div class="mb-3">   
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Other Income Source</label>
+                        <input type="number" class="form-control fs-4" id="ois" placeholder="Enetr Income" >
+                    </div>
+                   
+                    <div class="text-center ">
+                        <button onclick="myBudget()" class="w-25 fs-3 text-success btn btn-outline-warning btn-warning" type="submit">Submit</button>
+                        <button class="w-25 fs-3 text-success btn btn-outline-warning btn-warning ms-5" type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="w-100 border border-1 p-5 bg-success rounded-4 text-warning fs-4 m-auto" id="next">
+                <h3 class="text-center text-warning">Budget</h3>
+                <div class="m-auto w-75">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Your Name</label>
+                        <input disabled type="text" class="fw-bold form-control fs-4" id="name1" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Your Total Income</label>
+                        <input disabled type="number" class="fw-bold form-control fs-4" id="ti" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Home Ration</label>
+                        <input disabled type="text" class="fw-bold form-control fs-4" id="hr">
+                        <div class="d-flex">
+                            <input  type="range" min="1" max="100" class="fw-bold form-control fs-4 w-75" onchange="ration(this.value);" oninput="perhr.value=this.value" >
+                            <div class="w-25 d-flex">
+                            <output id="perhr" class="fw-bold text-end form-control fs-4 w-50" >0</output>
+                            <b class="ms-2 fs-2 w-25"> %</b>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Education</label>
+                        <input disabled type="text" class="fw-bold form-control fs-4" id="ed">
+                        <div class="d-flex">
+                            <input  type="range" min="1" max="100" class="fw-bold form-control fs-4 w-75" onchange="education(this.value);" oninput="pered.value=this.value" >
+                            <div class="w-25 d-flex">
+                            <output id="pered" class="fw-bold text-end form-control fs-4 w-50" >0</output>
+                            <b class="ms-2 fs-2 w-25"> %</b>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Shopping</label>
+                        <input disabled type="text" class="fw-bold form-control fs-4" id="sp">
+                        <div class="d-flex">
+                            <input  type="range" min="1" max="100" class="fw-bold form-control fs-4 w-75" onchange="shop(this.value);" oninput="perSp.value=this.value" >
+                            <div class="w-25 d-flex">
+                            <output id="perSp" class="fw-bold text-end form-control fs-4 w-50" >0</output>
+                            <b class="ms-2 fs-2 w-25"> %</b>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label fw-bold">Travel</label>
+                        <input disabled type="text" class="fw-bold form-control fs-4" id="tr">
+                        <div class="d-flex">
+                            <input  type="range" min="1" max="100" class="fw-bold form-control fs-4 w-75" onchange="travel(this.value);" oninput="perTr.value=this.value" >
+                            <div class="w-25 d-flex">
+                            <output id="perTr" class="fw-bold text-end form-control fs-4 w-50" >0</output>
+                            <b class="ms-2 fs-2 w-25"> %</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
